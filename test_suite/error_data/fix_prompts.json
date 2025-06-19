@@ -1,0 +1,46 @@
+{
+  "syntax error": [
+    {
+      "timestamp": "2025-05-08T16:07:57.760539",
+      "fix_type": "if",
+      "prompt": "Convert switch-case to Promela if...fi structure with proper guards for each case.",
+      "original_code": "\n            void main() {\n                int x = 2;\n                switch(x) {\n                    case 0: printf(\"zero\"); break;\n                    case 1: printf(\"one\"); break;\n                    case 2: printf(\"two\"); break;\n                    default: printf(\"other\");\n                }\n            }\n            ",
+      "fixed_code": "/* Standard defines */\n#define NULL 0\n#define TRUE 1\n#define FALSE 0\n#define MAX_SIZE 255\n\nbyte other;\nbyte two;\nbyte zero;\nbyte one;\nbyte x = 2;\n\ninit {\n  if\n  :: (x == 0) -> printf(\"zero\")\n  :: (x == 1) -> printf(\"one\")\n  :: (x == 2) -> printf(\"two\")\n  :: else -> printf(\"other\")\n  fi\n}"
+    },
+    {
+      "timestamp": "2025-05-08T16:08:00.979653",
+      "fix_type": "do",
+      "prompt": "Convert while loop with complex condition to do...od with proper guard conditions.",
+      "original_code": "\n            void main() {\n                int x = 0;\n                while(x < 10 && x % 2 == 0) {\n                    x++;\n                    if(x > 5) break;\n                }\n            }\n            ",
+      "fixed_code": "/* Standard defines */\n#define NULL 0\n#define TRUE 1\n#define FALSE 0\n#define MAX_SIZE 255\n\ninline main() {\n\tbyte x = 0;\n\tdo\n\t:: (x < 10 && x % 2 == 0) ->\n\t\tx = x + 1;\n\t\tif\n\t\t:: (x > 5) -> break\n\t\t:: else -> skip\n\t\tfi;\n\t:: else -> break\n\tod;\n}\n\ninit {\n\tmain()\n}"
+    },
+    {
+      "timestamp": "2025-05-08T18:47:32.421685",
+      "fix_type": "typedef",
+      "prompt": "Convert nested structs to flat Promela variable declarations with appropriate naming.",
+      "original_code": "\n            struct Inner {\n                int value;\n            };\n            struct Outer {\n                struct Inner inner;\n                int extra;\n            };\n            void main() {\n                struct Outer obj;\n                obj.inner.value = 42;\n            }\n            ",
+      "fixed_code": "/* Standard defines */\n#define NULL 0\n#define TRUE 1\n#define FALSE 0\n#define MAX_SIZE 255\n\nbyte MAX_STRUCT_OUTER;\nbyte MAX_STRUCT_INNER;\n\n\n\n\nint struct_Outer_inner_mem[MAX_STRUCT_OUTER];\nint struct_Outer_extra_mem[MAX_STRUCT_OUTER];\n\nint struct_Inner_value_mem[MAX_STRUCT_INNER];\n\ninline main() {\n  byte obj;\n  struct_Outer_inner_mem[0] = 0;\n  struct_Outer_extra_mem[0] = 0;\n  struct_Inner_value_mem[0] = 42;\n}\n\ninit {\n    main();\n}"
+    },
+    {
+      "timestamp": "2025-05-08T18:47:47.783226",
+      "fix_type": "array",
+      "prompt": "Convert pointer arithmetic to array indexing in Promela.",
+      "original_code": "\n            void main() {\n                int arr[5] = {1,2,3,4,5};\n                int* ptr = arr;\n                ptr++;\n                *ptr = 10;\n            }\n            ",
+      "fixed_code": "/* Standard defines */\n#define NULL 0\n#define TRUE 1\n#define FALSE 0\n#define MAX_SIZE 255\n\nbyte arr_valid[5];\nbyte arr_mem[5];\n\ninline main() {\n  byte ptr;\n\n  arr_mem[0] = 1;\n  arr_mem[1] = 2;\n  arr_mem[2] = 3;\n  arr_mem[3] = 4;\n  arr_mem[4] = 5;\n\n  arr_valid[0] = true;\n  arr_valid[1] = true;\n  arr_valid[2] = true;\n  arr_valid[3] = true;\n  arr_valid[4] = true;\n  ptr = 0;\n\n  ptr = ptr + 1;\n  arr_mem[ptr] = 10;\n}\n\ninit {\n  atomic {\n    main();\n  }\n}"
+    },
+    {
+      "timestamp": "2025-05-08T18:50:34.449126",
+      "fix_type": "typedef",
+      "prompt": "Convert struct with arrays to Promela using separate arrays for each field.",
+      "original_code": "\n            struct Point {\n                int x;\n                int y;\n                int history[5];\n            };\n            void main() {\n                struct Point p;\n                p.history[0] = p.x + p.y;\n            }\n            ",
+      "fixed_code": "/* Standard defines */\n#define NULL 0\n#define TRUE 1\n#define FALSE 0\n#define MAX_SIZE 255\n\n\n\nbyte x;\nbyte y;\nbyte history[5];\n\n\ninline main() {\n  byte p;\n  history[0] = x + y;\n}\n\ninit {\n  atomic {\n    main();\n  }\n}"
+    },
+    {
+      "timestamp": "2025-05-08T18:50:49.867251",
+      "fix_type": "array",
+      "prompt": "Convert dynamic memory allocation to static Promela arrays with bounds checking.",
+      "original_code": "\n            void main() {\n                int* arr = malloc(5 * sizeof(int));\n                for(int i = 0; i < 5; i++) {\n                    arr[i] = i;\n                }\n                free(arr);\n            }\n            ",
+      "fixed_code": "/* Standard defines */\n#define NULL 0\n#define TRUE 1\n#define FALSE 0\n#define MAX_SIZE 255\n\nbyte ptr;\nbyte size;\nbyte arr_valid[5];\nbyte arr_mem[5];\n\ninline malloc_int_array(size, ptr) {\n  byte i = 0;\n  do\n  :: i < size ->\n    if\n    :: !arr_valid[i] ->\n      arr_valid[i] = true;\n      ptr = i;\n      break;\n    :: else ->\n      i++;\n    fi;\n  :: else ->\n    ptr = -1;\n    break;\n  od;\n}\n\ninline free_int_array(ptr) {\n  if\n  :: ptr >= 0 && ptr < 5 ->\n    arr_valid[ptr] = false;\n  :: else ->\n    skip;\n  fi;\n}\n\nproctype main() {\n  byte arr;\n  malloc_int_array(5, arr);\n  if\n  :: arr != -1 ->\n    byte i = 0;\n    do\n    :: i < 5 ->\n      arr_mem[i] = i;\n      i++;\n    :: else ->\n      break;\n    od;\n    free_int_array(arr);\n  :: else ->\n    skip;\n  fi;\n}\n\ninit {\n  run main();\n}"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+/* Channels and Message Passing CIL test file */
+
+typedef struct {
+  int id;
+  int data;
+} Message;
+
+int messageQueue[10];
+int queueSize = 0;
+int mutex = 1; // 1 = available, 0 = locked
+
+void sendMessage(int id, int data) {
+  /* Wait for mutex */
+  while(mutex == 0);
+  mutex = 0;
+  
+  /* Add to queue */
+  if(queueSize < 10) {
+    Message msg;
+    msg.id = id;
+    msg.data = data;
+    
+    /* In real code this would marshall the struct into queue */
+    messageQueue[queueSize] = data;
+    queueSize++;
+  }
+  
+  /* Release mutex */
+  mutex = 1;
+}
+
+int receiveMessage() {
+  int result = -1;
+  
+  /* Wait for mutex */
+  while(mutex == 0);
+  mutex = 0;
+  
+  /* Get from queue */
+  if(queueSize > 0) {
+    result = messageQueue[0];
+    
+    /* Shift queue */
+    for(int i = 0; i < queueSize - 1; i++) {
+      messageQueue[i] = messageQueue[i+1];
+    }
+    queueSize--;
+  }
+  
+  /* Release mutex */
+  mutex = 1;
+  
+  return result;
+}
+
+void producer() {
+  for(int i = 0; i < 5; i++) {
+    sendMessage(i, i * 10);
+  }
+}
+
+void consumer() {
+  for(int i = 0; i < 5; i++) {
+    int msg = receiveMessage();
+    /* Process message */
+  }
+}
+
+void main() {
+  /* This would be concurrent in a real program */
+  producer();
+  consumer();
+} 

@@ -1,0 +1,14 @@
+{
+    "function_return": {
+        "cil_code": "int calculate(int x) {\n    return x * 2;\n}\nvoid main() {\n    int result = calculate(5);\n    printf(\"Result: %d\\n\", result);\n}",
+        "expected_promela": "inline calculate(x, result) {\n    result = x * 2;\n}\n\ninit {\n    byte x = 5;\n    byte result;\n    calculate(x, result);\n    printf(\"Result: %d\\n\", result);\n}",
+        "expected_errors": ["functions must be converted to inline with output parameters"],
+        "fix_prompt": "Convert C functions to Promela inline functions. Use output parameters instead of return values."
+    },
+    "printf_format": {
+        "cil_code": "void main() {\n    int x = 5;\n    printf(\"Value: %d\\n\", x);\n    printf(\"Multiple values: %d, %d\\n\", x, x*2);\n}",
+        "expected_promela": "init {\n    byte x = 5;\n    printf(\"Value: \");\n    printf(\"%d\", x);\n    printf(\"\\n\");\n    printf(\"Multiple values: \");\n    printf(\"%d\", x);\n    printf(\", \");\n    printf(\"%d\", x*2);\n    printf(\"\\n\");\n}",
+        "expected_errors": ["printf format string must be split into separate statements"],
+        "fix_prompt": "Convert C-style printf with format specifiers to Promela printf statements. Each value should be printed separately."
+    }
+} 

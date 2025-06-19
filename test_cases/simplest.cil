@@ -1,0 +1,18 @@
+/* Simplest CIL test file */
+
+int global_var = 10;
+
+void main() {
+  int a = 5;
+  int b = 7;
+  
+  /* Simple operation */
+  a = a + b;
+  
+  /* Simple conditional */
+  if (a > 10) {
+    global_var = 1;
+  } else {
+    global_var = 0;
+  }
+} 

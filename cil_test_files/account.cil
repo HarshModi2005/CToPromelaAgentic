@@ -1,0 +1,86 @@
+.assembly extern mscorlib {}
+.assembly BankSystem {}
+
+.class public sealed Account
+{
+    .field public int32 balance
+    .field private int32 accountNumber
+    .field private static bool isLocked
+    
+    .method public instance void .ctor(int32 initialBalance, int32 number) cil managed
+    {
+        .maxstack 2
+        
+        ldarg.0
+        call instance void [mscorlib]System.Object::.ctor()
+        
+        ldarg.0
+        ldarg.1
+        stfld int32 Account::balance
+        
+        ldarg.0
+        ldarg.2
+        stfld int32 Account::accountNumber
+        
+        ret
+    }
+    
+    .method public static bool TryLock() cil managed
+    {
+        .maxstack 3
+        .locals init (bool acquired)
+        
+        ldsflda bool Account::isLocked
+        ldc.i4.0  // expected value (false)
+        ldc.i4.1  // new value (true)
+        call bool [mscorlib]System.Threading.Interlocked::CompareExchange<bool>(bool&, bool, bool)
+        
+        ldc.i4.0
+        ceq
+        stloc.0
+        
+        ldloc.0
+        ret
+    }
+    
+    .method public static void Unlock() cil managed
+    {
+        .maxstack 1
+        
+        ldc.i4.0
+        stsfld bool Account::isLocked
+        
+        ret
+    }
+    
+    .method public instance int32 GetBalance() cil managed
+    {
+        .maxstack 1
+        
+        ldarg.0
+        ldfld int32 Account::balance
+        
+        ret
+    }
+    
+    .method public instance int32 GetAccountNumber() cil managed
+    {
+        .maxstack 1
+        
+        ldarg.0
+        ldfld int32 Account::accountNumber
+        
+        ret
+    }
+    
+    .method public instance void SetBalance(int32 newBalance) cil managed
+    {
+        .maxstack 2
+        
+        ldarg.0
+        ldarg.1
+        stfld int32 Account::balance
+        
+        ret
+    }
+} 

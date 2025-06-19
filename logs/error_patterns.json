@@ -1,0 +1,204 @@
+{
+  "error_patterns": [
+    {
+      "timestamp": "2025-05-07T21:46:33.396520",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:46:35.799206",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:46:37.454922",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:46:38.751273",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:46:43.420675",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:46:47.967255",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:46:51.007164",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:46:55.090466",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:47:00.185776",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:49:33.148198",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:49:39.790732",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:49:42.448661",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:49:48.776340",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:49:53.550834",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:49:56.563960",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:50:00.494458",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:50:06.730739",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:53:36.799824",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:53:39.429423",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:53:41.061480",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:53:47.699935",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:53:53.937087",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:53:57.030426",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:54:01.000527",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    },
+    {
+      "timestamp": "2025-05-07T21:54:06.407994",
+      "error_type": null,
+      "line": null,
+      "context": null,
+      "variable": null,
+      "message": null
+    }
+  ]
+}

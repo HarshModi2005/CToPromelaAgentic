@@ -1,0 +1,92 @@
+// Memory safety verification test case
+#define MAX_ALLOC 100
+
+typedef struct {
+    void* ptr;
+    size_t size;
+    bool is_allocated;
+} MemoryBlock;
+
+MemoryBlock memory_blocks[MAX_ALLOC];
+int num_blocks = 0;
+
+// Verification properties
+bool null_pointer_deref = false;
+bool double_free = false;
+bool memory_leak = false;
+bool buffer_overflow = false;
+
+void* safe_malloc(size_t size) {
+    if (num_blocks >= MAX_ALLOC) {
+        return NULL;
+    }
+    
+    void* ptr = malloc(size);
+    if (ptr) {
+        memory_blocks[num_blocks].ptr = ptr;
+        memory_blocks[num_blocks].size = size;
+        memory_blocks[num_blocks].is_allocated = true;
+        num_blocks++;
+    }
+    
+    return ptr;
+}
+
+void safe_free(void* ptr) {
+    if (!ptr) {
+        return;
+    }
+    
+    for (int i = 0; i < num_blocks; i++) {
+        if (memory_blocks[i].ptr == ptr) {
+            if (!memory_blocks[i].is_allocated) {
+                double_free = true;
+                return;
+            }
+            memory_blocks[i].is_allocated = false;
+            free(ptr);
+            return;
+        }
+    }
+}
+
+void check_memory_safety() {
+    // Check for memory leaks
+    for (int i = 0; i < num_blocks; i++) {
+        if (memory_blocks[i].is_allocated) {
+            memory_leak = true;
+            break;
+        }
+    }
+}
+
+void test_memory_safety() {
+    // Test null pointer
+    int* ptr = NULL;
+    if (*ptr) {  // Should trigger null pointer detection
+        null_pointer_deref = true;
+    }
+    
+    // Test double free
+    int* arr = (int*)safe_malloc(sizeof(int) * 10);
+    safe_free(arr);
+    safe_free(arr);  // Should trigger double free detection
+    
+    // Test buffer overflow
+    char* str = (char*)safe_malloc(5);
+    strcpy(str, "Hello, World!");  // Should trigger buffer overflow detection
+    
+    // Test memory leak
+    int* leak = (int*)safe_malloc(sizeof(int));
+    leak = NULL;  // Lost the pointer without freeing
+    
+    check_memory_safety();
+}
+
+// LTL properties for verification
+/*
+ltl no_null_deref { [] (!null_pointer_deref) }
+ltl no_double_free { [] (!double_free) }
+ltl no_memory_leak { [] (!memory_leak) }
+ltl no_buffer_overflow { [] (!buffer_overflow) }
+*/ 

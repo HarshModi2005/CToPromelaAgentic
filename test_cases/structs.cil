@@ -1,0 +1,44 @@
+/* Structs CIL test file */
+
+struct Point {
+  int x;
+  int y;
+};
+
+struct Rectangle {
+  struct Point topLeft;
+  struct Point bottomRight;
+  int color;
+};
+
+struct Point origin = {0, 0};
+
+int calculateArea(struct Rectangle rect) {
+  int width = rect.bottomRight.x - rect.topLeft.x;
+  int height = rect.bottomRight.y - rect.topLeft.y;
+  return width * height;
+}
+
+void main() {
+  struct Point p1 = {0, 0};
+  struct Point p2 = {5, 10};
+  
+  struct Rectangle rect;
+  rect.topLeft = p1;
+  rect.bottomRight = p2;
+  rect.color = 1;
+  
+  int area = calculateArea(rect);
+  
+  /* Access struct fields */
+  origin.x = rect.topLeft.x;
+  
+  /* Struct array */
+  struct Point points[3];
+  points[0].x = 1;
+  points[0].y = 2;
+  points[1].x = 3;
+  points[1].y = 4;
+  points[2].x = 5;
+  points[2].y = 6;
+} 

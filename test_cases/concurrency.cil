@@ -1,0 +1,44 @@
+/* CIL test file with concurrency */
+
+int shared_counter = 0;
+int lock = 0;
+
+void acquire_lock() {
+  while (lock != 0) {
+    /* Wait for lock to be released */
+  }
+  lock = 1;
+}
+
+void release_lock() {
+  lock = 0;
+}
+
+void increment_counter() {
+  int i;
+  
+  for (i = 0; i < 10; i++) {
+    acquire_lock();
+    shared_counter = shared_counter + 1;
+    release_lock();
+  }
+}
+
+void decrement_counter() {
+  int i;
+  
+  for (i = 0; i < 5; i++) {
+    acquire_lock();
+    shared_counter = shared_counter - 1;
+    release_lock();
+  }
+}
+
+void main() {
+  /* Start concurrent processes */
+  increment_counter();
+  decrement_counter();
+  
+  /* Final value should be 5 */
+  printf("Final counter value: %d\n", shared_counter);
+} 

@@ -1,0 +1,616 @@
+{
+  "fixes": [
+    {
+      "timestamp": "2025-04-27T00:05:17.647298",
+      "error_type": "syntax_error",
+      "error_details": {
+        "line": "20",
+        "context": "saw 'a string' near '\"basic for loop:\\n\"'",
+        "variable": null,
+        "message": "spin: loops.pml:20, Error: syntax error\tsaw 'a string' near '\"Basic for loop:\\n\"'\nspin: loops.pml:24, Error: syntax error\tsaw 'a string' near '\"For loop iteration: %d\\n\"'\nspin: loops.pml:28, Error: syntax error\tsaw 'a string' near '\"\\nWhile loop:\\n\"'\nspin: loops.pml:33, Error: syntax error\tsaw 'a string' near '\"While loop iteration: %d\\n\"'\nspin: loops.pml:35, Error: syntax error\tsaw 'token: ::' near '::'\nspin: loops.pml:36, Error: syntax error\tsaw 'keyword: od'\nspin: loops.pml:39, Error: syntax error\tsaw 'a string' near '\"\\nDo-While loop:\\n\"'\nspin: loops.pml:44, Error: syntax error\tsaw 'a string' near '\"Do-While loop iteration: %d\\n\"'\nspin: loops.pml:46, Error: syntax error\tsaw 'token: ::' near '::'\nspin: loops.pml:47, Error: syntax error\tsaw 'keyword: od'\nspin: loops.pml:50, Error: syntax error\tsaw 'a string' near '\"\\nNested loops:\\n\"'\nspin: loops.pml:54, Error: syntax error\tsaw 'a string' near '\"Nested loop [%d,%d]\\n\"'\nspin: loops.pml:59, Error: syntax error\tsaw 'a string' near '\"\\nLoop with continue:\\n\"'\nspin: loops.pml:67, Error: syntax error\tsaw 'a string' near '\"Skipping even number: %d\\n\"'\nspin: loops.pml:69, Error: undeclared variable: continue statement separator\n"
+      },
+      "fix_pattern": "printf_format_fix",
+      "diff": [
+        {
+          "line_num": 20,
+          "original": "    print_value(\"Basic for loop:\\n\", 0);",
+          "fixed": "    printf(\"Basic for loop:\\n\", 0);"
+        },
+        {
+          "line_num": 24,
+          "original": "        print_value(\"For loop iteration: %d\\n\", i);",
+          "fixed": "        printf(\"For loop iteration: %d\\n\", i);"
+        },
+        {
+          "line_num": 28,
+          "original": "    print_value(\"\\nWhile loop:\\n\", 0);",
+          "fixed": "    printf(\"\\nWhile loop:\\n\", 0);"
+        },
+        {
+          "line_num": 33,
+          "original": "        print_value(\"While loop iteration: %d\\n\", i);",
+          "fixed": "        printf(\"While loop iteration: %d\\n\", i);"
+        },
+        {
+          "line_num": 39,
+          "original": "    print_value(\"\\nDo-While loop:\\n\", 0);",
+          "fixed": "    printf(\"\\nDo-While loop:\\n\", 0);"
+        },
+        {
+          "line_num": 44,
+          "original": "        print_value(\"Do-While loop iteration: %d\\n\", i);",
+          "fixed": "        printf(\"Do-While loop iteration: %d\\n\", i);"
+        },
+        {
+          "line_num": 50,
+          "original": "    print_value(\"\\nNested loops:\\n\", 0);",
+          "fixed": "    printf(\"\\nNested loops:\\n\", 0);"
+        },
+        {
+          "line_num": 54,
+          "original": "            print_value(\"Nested loop [%d,%d]\\n\", i * 10 + j);",
+          "fixed": "            printf(\"Nested loop [%d,%d]\\n\", i * 10 + j);"
+        },
+        {
+          "line_num": 59,
+          "original": "    print_value(\"\\nLoop with continue:\\n\", 0);",
+          "fixed": "    printf(\"\\nLoop with continue:\\n\", 0);"
+        },
+        {
+          "line_num": 67,
+          "original": "            print_value(\"Skipping even number: %d\\n\", i);",
+          "fixed": "            printf(\"Skipping even number: %d\\n\", i);"
+        },
+        {
+          "line_num": 71,
+          "original": "        print_value(\"Processing odd number: %d\\n\", i);",
+          "fixed": "        printf(\"Processing odd number: %d\\n\", i);"
+        },
+        {
+          "line_num": 76,
+          "original": "    print_value(\"\\nLoop with break:\\n\", 0);",
+          "fixed": "    printf(\"\\nLoop with break:\\n\", 0);"
+        },
+        {
+          "line_num": 82,
+          "original": "        print_value(\"Checking number: %d\\n\", i);",
+          "fixed": "        printf(\"Checking number: %d\\n\", i);"
+        },
+        {
+          "line_num": 85,
+          "original": "            print_value(\"Found target number %d, breaking loop\\n\", i);",
+          "fixed": "            printf(\"Found target number %d, breaking loop\\n\", i);"
+        },
+        {
+          "line_num": 93,
+          "original": "    print_value(\"\\nAll loops completed\\n\", 0);",
+          "fixed": "    printf(\"\\nAll loops completed\\n\", 0);"
+        }
+      ]
+    },
+    {
+      "timestamp": "2025-04-27T13:25:42.063777",
+      "error_type": "syntax_error",
+      "error_details": {
+        "line": "20",
+        "context": "saw 'a string' near '\"basic for loop:\\n\"'",
+        "variable": null,
+        "message": "spin: loops.pml:20, Error: syntax error\tsaw 'a string' near '\"Basic for loop:\\n\"'\nspin: loops.pml:24, Error: syntax error\tsaw 'a string' near '\"For loop iteration: %d\\n\"'\nspin: loops.pml:28, Error: syntax error\tsaw 'a string' near '\"\\nWhile loop:\\n\"'\nspin: loops.pml:33, Error: syntax error\tsaw 'a string' near '\"While loop iteration: %d\\n\"'\nspin: loops.pml:35, Error: syntax error\tsaw 'token: ::' near '::'\nspin: loops.pml:36, Error: syntax error\tsaw 'keyword: od'\nspin: loops.pml:39, Error: syntax error\tsaw 'a string' near '\"\\nDo-While loop:\\n\"'\nspin: loops.pml:44, Error: syntax error\tsaw 'a string' near '\"Do-While loop iteration: %d\\n\"'\nspin: loops.pml:46, Error: syntax error\tsaw 'token: ::' near '::'\nspin: loops.pml:47, Error: syntax error\tsaw 'keyword: od'\nspin: loops.pml:50, Error: syntax error\tsaw 'a string' near '\"\\nNested loops:\\n\"'\nspin: loops.pml:54, Error: syntax error\tsaw 'a string' near '\"Nested loop [%d,%d]\\n\"'\nspin: loops.pml:59, Error: syntax error\tsaw 'a string' near '\"\\nLoop with continue:\\n\"'\nspin: loops.pml:67, Error: syntax error\tsaw 'a string' near '\"Skipping even number: %d\\n\"'\nspin: loops.pml:69, Error: undeclared variable: continue statement separator\n"
+      },
+      "fix_pattern": "printf_format_fix",
+      "diff": [
+        {
+          "line_num": 20,
+          "original": "    print_value(\"Basic for loop:\\n\", 0);",
+          "fixed": "    printf(\"Basic for loop:\\n\", 0);"
+        },
+        {
+          "line_num": 24,
+          "original": "        print_value(\"For loop iteration: %d\\n\", i);",
+          "fixed": "        printf(\"For loop iteration: %d\\n\", i);"
+        },
+        {
+          "line_num": 28,
+          "original": "    print_value(\"\\nWhile loop:\\n\", 0);",
+          "fixed": "    printf(\"\\nWhile loop:\\n\", 0);"
+        },
+        {
+          "line_num": 33,
+          "original": "        print_value(\"While loop iteration: %d\\n\", i);",
+          "fixed": "        printf(\"While loop iteration: %d\\n\", i);"
+        },
+        {
+          "line_num": 39,
+          "original": "    print_value(\"\\nDo-While loop:\\n\", 0);",
+          "fixed": "    printf(\"\\nDo-While loop:\\n\", 0);"
+        },
+        {
+          "line_num": 44,
+          "original": "        print_value(\"Do-While loop iteration: %d\\n\", i);",
+          "fixed": "        printf(\"Do-While loop iteration: %d\\n\", i);"
+        },
+        {
+          "line_num": 50,
+          "original": "    print_value(\"\\nNested loops:\\n\", 0);",
+          "fixed": "    printf(\"\\nNested loops:\\n\", 0);"
+        },
+        {
+          "line_num": 54,
+          "original": "            print_value(\"Nested loop [%d,%d]\\n\", i * 10 + j);",
+          "fixed": "            printf(\"Nested loop [%d,%d]\\n\", i * 10 + j);"
+        },
+        {
+          "line_num": 59,
+          "original": "    print_value(\"\\nLoop with continue:\\n\", 0);",
+          "fixed": "    printf(\"\\nLoop with continue:\\n\", 0);"
+        },
+        {
+          "line_num": 67,
+          "original": "            print_value(\"Skipping even number: %d\\n\", i);",
+          "fixed": "            printf(\"Skipping even number: %d\\n\", i);"
+        },
+        {
+          "line_num": 71,
+          "original": "        print_value(\"Processing odd number: %d\\n\", i);",
+          "fixed": "        printf(\"Processing odd number: %d\\n\", i);"
+        },
+        {
+          "line_num": 76,
+          "original": "    print_value(\"\\nLoop with break:\\n\", 0);",
+          "fixed": "    printf(\"\\nLoop with break:\\n\", 0);"
+        },
+        {
+          "line_num": 82,
+          "original": "        print_value(\"Checking number: %d\\n\", i);",
+          "fixed": "        printf(\"Checking number: %d\\n\", i);"
+        },
+        {
+          "line_num": 85,
+          "original": "            print_value(\"Found target number %d, breaking loop\\n\", i);",
+          "fixed": "            printf(\"Found target number %d, breaking loop\\n\", i);"
+        },
+        {
+          "line_num": 93,
+          "original": "    print_value(\"\\nAll loops completed\\n\", 0);",
+          "fixed": "    printf(\"\\nAll loops completed\\n\", 0);"
+        }
+      ]
+    },
+    {
+      "timestamp": "2025-04-27T13:25:42.064730",
+      "error_type": "undeclared_variable",
+      "error_details": {
+        "line": "69",
+        "context": "Undeclared variable: continue statement separator",
+        "variable": "continue",
+        "message": "Error: undeclared variable: continue statement separator"
+      },
+      "fix_pattern": "continue_statement_fix",
+      "diff": [
+        {
+          "line_num": 20,
+          "original": "    print_value(\"Basic for loop:\\n\", 0);",
+          "fixed": "    printf(\"Basic for loop:\\n\", 0);"
+        },
+        {
+          "line_num": 24,
+          "original": "        print_value(\"For loop iteration: %d\\n\", i);",
+          "fixed": "        printf(\"For loop iteration: %d\\n\", i);"
+        },
+        {
+          "line_num": 28,
+          "original": "    print_value(\"\\nWhile loop:\\n\", 0);",
+          "fixed": "    printf(\"\\nWhile loop:\\n\", 0);"
+        },
+        {
+          "line_num": 33,
+          "original": "        print_value(\"While loop iteration: %d\\n\", i);",
+          "fixed": "        printf(\"While loop iteration: %d\\n\", i);"
+        },
+        {
+          "line_num": 39,
+          "original": "    print_value(\"\\nDo-While loop:\\n\", 0);",
+          "fixed": "    printf(\"\\nDo-While loop:\\n\", 0);"
+        },
+        {
+          "line_num": 44,
+          "original": "        print_value(\"Do-While loop iteration: %d\\n\", i);",
+          "fixed": "        printf(\"Do-While loop iteration: %d\\n\", i);"
+        },
+        {
+          "line_num": 50,
+          "original": "    print_value(\"\\nNested loops:\\n\", 0);",
+          "fixed": "    printf(\"\\nNested loops:\\n\", 0);"
+        },
+        {
+          "line_num": 54,
+          "original": "            print_value(\"Nested loop [%d,%d]\\n\", i * 10 + j);",
+          "fixed": "            printf(\"Nested loop [%d,%d]\\n\", i * 10 + j);"
+        },
+        {
+          "line_num": 59,
+          "original": "    print_value(\"\\nLoop with continue:\\n\", 0);",
+          "fixed": "    printf(\"\\nLoop with continue:\\n\", 0);"
+        },
+        {
+          "line_num": 67,
+          "original": "            print_value(\"Skipping even number: %d\\n\", i);",
+          "fixed": "            printf(\"Skipping even number: %d\\n\", i);"
+        },
+        {
+          "line_num": 68,
+          "original": "            continue;",
+          "fixed": "            goto continue_label; // Replace continue with goto"
+        },
+        {
+          "line_num": 69,
+          "original": "        :: else -> skip;",
+          "fixed": "        continue_label: skip;"
+        },
+        {
+          "line_num": 70,
+          "original": "        fi;",
+          "fixed": "        :: else -> skip;"
+        },
+        {
+          "line_num": 71,
+          "original": "        print_value(\"Processing odd number: %d\\n\", i);",
+          "fixed": "        fi;"
+        },
+        {
+          "line_num": 72,
+          "original": "    :: else -> break;",
+          "fixed": "        printf(\"Processing odd number: %d\\n\", i);"
+        },
+        {
+          "line_num": 73,
+          "original": "    od;",
+          "fixed": "    :: else -> break;"
+        },
+        {
+          "line_num": 74,
+          "original": "    ",
+          "fixed": "    od;"
+        },
+        {
+          "line_num": 75,
+          "original": "    // Loop with break",
+          "fixed": "    "
+        },
+        {
+          "line_num": 76,
+          "original": "    print_value(\"\\nLoop with break:\\n\", 0);",
+          "fixed": "    // Loop with break"
+        },
+        {
+          "line_num": 77,
+          "original": "    ",
+          "fixed": "    printf(\"\\nLoop with break:\\n\", 0);"
+        },
+        {
+          "line_num": 78,
+          "original": "    i = 0;",
+          "fixed": "    "
+        },
+        {
+          "line_num": 79,
+          "original": "    do",
+          "fixed": "    i = 0;"
+        },
+        {
+          "line_num": 80,
+          "original": "    :: i < max_iterations ->",
+          "fixed": "    do"
+        },
+        {
+          "line_num": 81,
+          "original": "        i++;",
+          "fixed": "    :: i < max_iterations ->"
+        },
+        {
+          "line_num": 82,
+          "original": "        print_value(\"Checking number: %d\\n\", i);",
+          "fixed": "        i++;"
+        },
+        {
+          "line_num": 83,
+          "original": "        if",
+          "fixed": "        printf(\"Checking number: %d\\n\", i);"
+        },
+        {
+          "line_num": 84,
+          "original": "        :: i == 3 -> ",
+          "fixed": "        if"
+        },
+        {
+          "line_num": 85,
+          "original": "            print_value(\"Found target number %d, breaking loop\\n\", i);",
+          "fixed": "        :: i == 3 -> "
+        },
+        {
+          "line_num": 86,
+          "original": "            break;",
+          "fixed": "            printf(\"Found target number %d, breaking loop\\n\", i);"
+        },
+        {
+          "line_num": 87,
+          "original": "        :: else -> skip;",
+          "fixed": "            break;"
+        },
+        {
+          "line_num": 88,
+          "original": "        fi;",
+          "fixed": "        :: else -> skip;"
+        },
+        {
+          "line_num": 89,
+          "original": "    :: else -> break;",
+          "fixed": "        fi;"
+        },
+        {
+          "line_num": 90,
+          "original": "    od;",
+          "fixed": "    :: else -> break;"
+        },
+        {
+          "line_num": 91,
+          "original": "    ",
+          "fixed": "    od;"
+        },
+        {
+          "line_num": 92,
+          "original": "    // Print final message",
+          "fixed": "    "
+        },
+        {
+          "line_num": 93,
+          "original": "    print_value(\"\\nAll loops completed\\n\", 0);",
+          "fixed": "    // Print final message"
+        },
+        {
+          "line_num": 94,
+          "original": "}",
+          "fixed": "    printf(\"\\nAll loops completed\\n\", 0);"
+        },
+        {
+          "line_num": 95,
+          "original": "",
+          "fixed": "}"
+        },
+        {
+          "line_num": 96,
+          "original": "init {",
+          "fixed": ""
+        },
+        {
+          "line_num": 97,
+          "original": "    run main_proc();",
+          "fixed": "init {"
+        },
+        {
+          "line_num": 98,
+          "original": "}",
+          "fixed": "    run main_proc();"
+        }
+      ]
+    },
+    {
+      "timestamp": "2025-04-27T13:25:42.065616",
+      "error_type": "format_string_error",
+      "error_details": {
+        "line": "54",
+        "context": "too few print args for format string",
+        "variable": null,
+        "message": "Error: too few print args \"Nested loop [%d,%d]\\n\""
+      },
+      "fix_pattern": "format_string_fix",
+      "diff": [
+        {
+          "line_num": 20,
+          "original": "    print_value(\"Basic for loop:\\n\", 0);",
+          "fixed": "    printf(\"Basic for loop:\\n\", 0);"
+        },
+        {
+          "line_num": 24,
+          "original": "        print_value(\"For loop iteration: %d\\n\", i);",
+          "fixed": "        printf(\"For loop iteration: %d\\n\", i);"
+        },
+        {
+          "line_num": 28,
+          "original": "    print_value(\"\\nWhile loop:\\n\", 0);",
+          "fixed": "    printf(\"\\nWhile loop:\\n\", 0);"
+        },
+        {
+          "line_num": 33,
+          "original": "        print_value(\"While loop iteration: %d\\n\", i);",
+          "fixed": "        printf(\"While loop iteration: %d\\n\", i);"
+        },
+        {
+          "line_num": 39,
+          "original": "    print_value(\"\\nDo-While loop:\\n\", 0);",
+          "fixed": "    printf(\"\\nDo-While loop:\\n\", 0);"
+        },
+        {
+          "line_num": 44,
+          "original": "        print_value(\"Do-While loop iteration: %d\\n\", i);",
+          "fixed": "        printf(\"Do-While loop iteration: %d\\n\", i);"
+        },
+        {
+          "line_num": 50,
+          "original": "    print_value(\"\\nNested loops:\\n\", 0);",
+          "fixed": "    printf(\"\\nNested loops:\\n\", 0);"
+        },
+        {
+          "line_num": 54,
+          "original": "            print_value(\"Nested loop [%d,%d]\\n\", i * 10 + j);",
+          "fixed": "            printf(\"Nested loop [%d,%d]\\n\", i, j);"
+        },
+        {
+          "line_num": 59,
+          "original": "    print_value(\"\\nLoop with continue:\\n\", 0);",
+          "fixed": "    printf(\"\\nLoop with continue:\\n\", 0);"
+        },
+        {
+          "line_num": 67,
+          "original": "            print_value(\"Skipping even number: %d\\n\", i);",
+          "fixed": "            printf(\"Skipping even number: %d\\n\", i);"
+        },
+        {
+          "line_num": 68,
+          "original": "            continue;",
+          "fixed": "            goto continue_label; // Replace continue with goto"
+        },
+        {
+          "line_num": 69,
+          "original": "        :: else -> skip;",
+          "fixed": "        continue_label: skip;"
+        },
+        {
+          "line_num": 70,
+          "original": "        fi;",
+          "fixed": "        :: else -> skip;"
+        },
+        {
+          "line_num": 71,
+          "original": "        print_value(\"Processing odd number: %d\\n\", i);",
+          "fixed": "        fi;"
+        },
+        {
+          "line_num": 72,
+          "original": "    :: else -> break;",
+          "fixed": "        printf(\"Processing odd number: %d\\n\", i);"
+        },
+        {
+          "line_num": 73,
+          "original": "    od;",
+          "fixed": "    :: else -> break;"
+        },
+        {
+          "line_num": 74,
+          "original": "    ",
+          "fixed": "    od;"
+        },
+        {
+          "line_num": 75,
+          "original": "    // Loop with break",
+          "fixed": "    "
+        },
+        {
+          "line_num": 76,
+          "original": "    print_value(\"\\nLoop with break:\\n\", 0);",
+          "fixed": "    // Loop with break"
+        },
+        {
+          "line_num": 77,
+          "original": "    ",
+          "fixed": "    printf(\"\\nLoop with break:\\n\", 0);"
+        },
+        {
+          "line_num": 78,
+          "original": "    i = 0;",
+          "fixed": "    "
+        },
+        {
+          "line_num": 79,
+          "original": "    do",
+          "fixed": "    i = 0;"
+        },
+        {
+          "line_num": 80,
+          "original": "    :: i < max_iterations ->",
+          "fixed": "    do"
+        },
+        {
+          "line_num": 81,
+          "original": "        i++;",
+          "fixed": "    :: i < max_iterations ->"
+        },
+        {
+          "line_num": 82,
+          "original": "        print_value(\"Checking number: %d\\n\", i);",
+          "fixed": "        i++;"
+        },
+        {
+          "line_num": 83,
+          "original": "        if",
+          "fixed": "        printf(\"Checking number: %d\\n\", i);"
+        },
+        {
+          "line_num": 84,
+          "original": "        :: i == 3 -> ",
+          "fixed": "        if"
+        },
+        {
+          "line_num": 85,
+          "original": "            print_value(\"Found target number %d, breaking loop\\n\", i);",
+          "fixed": "        :: i == 3 -> "
+        },
+        {
+          "line_num": 86,
+          "original": "            break;",
+          "fixed": "            printf(\"Found target number %d, breaking loop\\n\", i);"
+        },
+        {
+          "line_num": 87,
+          "original": "        :: else -> skip;",
+          "fixed": "            break;"
+        },
+        {
+          "line_num": 88,
+          "original": "        fi;",
+          "fixed": "        :: else -> skip;"
+        },
+        {
+          "line_num": 89,
+          "original": "    :: else -> break;",
+          "fixed": "        fi;"
+        },
+        {
+          "line_num": 90,
+          "original": "    od;",
+          "fixed": "    :: else -> break;"
+        },
+        {
+          "line_num": 91,
+          "original": "    ",
+          "fixed": "    od;"
+        },
+        {
+          "line_num": 92,
+          "original": "    // Print final message",
+          "fixed": "    "
+        },
+        {
+          "line_num": 93,
+          "original": "    print_value(\"\\nAll loops completed\\n\", 0);",
+          "fixed": "    // Print final message"
+        },
+        {
+          "line_num": 94,
+          "original": "}",
+          "fixed": "    printf(\"\\nAll loops completed\\n\", 0);"
+        },
+        {
+          "line_num": 95,
+          "original": "",
+          "fixed": "}"
+        },
+        {
+          "line_num": 96,
+          "original": "init {",
+          "fixed": ""
+        },
+        {
+          "line_num": 97,
+          "original": "    run main_proc();",
+          "fixed": "init {"
+        },
+        {
+          "line_num": 98,
+          "original": "}",
+          "fixed": "    run main_proc();"
+        }
+      ]
+    }
+  ]
+}

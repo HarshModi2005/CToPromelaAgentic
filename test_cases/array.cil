@@ -1,0 +1,27 @@
+/* CIL test file with arrays */
+
+int array_sum(int arr[], int size) {
+  int sum = 0;
+  int i;
+  
+  for (i = 0; i < size; i++) {
+    sum = sum + arr[i];
+  }
+  
+  return sum;
+}
+
+void main() {
+  int numbers[5];
+  int i;
+  int result;
+  
+  /* Initialize array */
+  for (i = 0; i < 5; i++) {
+    numbers[i] = i * 2;
+  }
+  
+  result = array_sum(numbers, 5);
+  
+  printf("Sum of array elements: %d\n", result);
+} 

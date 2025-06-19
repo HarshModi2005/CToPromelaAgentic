@@ -1,0 +1,43 @@
+/* Loops CIL test file */
+
+int counter = 0;
+int results[5];
+
+void main() {
+  int i = 0;
+  
+  /* Simple for loop */
+  for(i = 0; i < 5; i++) {
+    results[i] = i * 2;
+  }
+  
+  /* While loop */
+  i = 0;
+  while(i < 5) {
+    counter = counter + results[i];
+    i++;
+  }
+  
+  /* Do-while loop */
+  i = 5;
+  do {
+    counter = counter - 1;
+    i--;
+  } while(i > 0);
+  
+  /* Loop with break */
+  for(i = 0; i < 10; i++) {
+    if(i > 5) {
+      break;
+    }
+    counter++;
+  }
+  
+  /* Loop with continue */
+  for(i = 0; i < 5; i++) {
+    if(i % 2 == 0) {
+      continue;
+    }
+    counter = counter + 10;
+  }
+} 

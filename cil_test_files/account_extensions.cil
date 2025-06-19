@@ -1,0 +1,39 @@
+.class public sealed AccountExtensions
+{
+    .method public static bool Transfer(class Account fromAccount, class Account toAccount, int32 amount) cil managed
+    {
+        .maxstack 3
+        .locals init (bool success)
+        
+        // Try to withdraw from source account
+        ldarg.0
+        ldarg.2
+        call bool Transaction::Withdraw(class Account, int32)
+        brfalse.s TransferFailed
+        
+        // Try to deposit to destination account
+        ldarg.1
+        ldarg.2
+        call bool Transaction::Deposit(class Account, int32)
+        brfalse.s DepositFailed
+        
+        // Transfer succeeded
+        ldc.i4.1
+        stloc.0
+        ret
+        
+    DepositFailed:
+        // Deposit failed, revert the withdrawal
+        ldarg.0
+        ldarg.2
+        call bool Transaction::Deposit(class Account, int32)
+        pop
+        
+    TransferFailed:
+        ldc.i4.0
+        stloc.0
+        
+        ldloc.0
+        ret
+    }
+} 

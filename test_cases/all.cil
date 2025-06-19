@@ -1,0 +1,86 @@
+/* CIL test file */
+
+
+
+/* State machine example for C to CIL conversion */
+
+/* State definitions */
+typedef enum {
+  STATE_IDLE,
+  STATE_STARTING,
+  STATE_RUNNING,
+  STATE_STOPPING,
+  STATE_ERROR
+} State;
+
+/* Event definitions */
+typedef enum {
+  EVENT_START,
+  EVENT_STOP,
+  EVENT_ERROR,
+  EVENT_RESET
+} Event;
+
+/* Global state */
+State current_state = STATE_IDLE;
+
+/* Process an event and update the state */
+void process_event(Event event) {
+  /* State transition logic */
+  switch (current_state) {
+    case STATE_IDLE:
+    if (event == EVENT_START) {
+      current_state = STATE_STARTING;
+      printf("Transitioning from IDLE to STARTING\n");
+    }
+  break;
+
+  case STATE_STARTING:
+  if (event == EVENT_ERROR) {
+    current_state = STATE_ERROR;
+    printf("Transitioning from STARTING to ERROR\n");
+  } else if (event == EVENT_START) {
+    current_state = STATE_RUNNING;
+    printf("Transitioning from STARTING to RUNNING\n");
+  }
+break;
+
+case STATE_RUNNING:
+if (event == EVENT_STOP) {
+  current_state = STATE_STOPPING;
+  printf("Transitioning from RUNNING to STOPPING\n");
+} else if (event == EVENT_ERROR) {
+  current_state = STATE_ERROR;
+  printf("Transitioning from RUNNING to ERROR\n");
+}
+break;
+
+case STATE_STOPPING:
+if (event == EVENT_STOP) {
+  current_state = STATE_IDLE;
+  printf("Transitioning from STOPPING to IDLE\n");
+}
+break;
+
+case STATE_ERROR:
+if (event == EVENT_RESET) {
+  current_state = STATE_IDLE;
+  printf("Transitioning from ERROR to IDLE\n");
+}
+break;
+}
+}
+
+void main() {
+  /* Test the state machine */
+  printf("Initial state: IDLE\n");
+
+  process_event(EVENT_START);  /* IDLE -> STARTING */
+  process_event(EVENT_START);  /* STARTING -> RUNNING */
+  process_event(EVENT_STOP);   /* RUNNING -> STOPPING */
+  process_event(EVENT_STOP);   /* STOPPING -> IDLE */
+
+  process_event(EVENT_START);  /* IDLE -> STARTING */
+  process_event(EVENT_ERROR);  /* STARTING -> ERROR */
+  process_event(EVENT_RESET);  /* ERROR -> IDLE */
+}

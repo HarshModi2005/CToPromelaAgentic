@@ -1,0 +1,144 @@
+// Test file for control structures, conditionals, and loops
+
+// Global variables
+int value = 10;
+bool condition = true;
+int max_iterations = 5;
+
+void test_control_structures() {
+    int i = 0;
+    int j, k;
+    
+    // Basic if statement
+    if (value > 5) {
+        printf("Value is greater than 5\n");
+    }
+    
+    // If-else statement
+    if (value % 2 == 0) {
+        printf("Value is even\n");
+    } else {
+        printf("Value is odd\n");
+    }
+    
+    // If-else if-else chain
+    if (value < 0) {
+        printf("Value is negative\n");
+    } else if (value == 0) {
+        printf("Value is zero\n");
+    } else if (value < 10) {
+        printf("Value is between 1 and 9\n");
+    } else {
+        printf("Value is 10 or greater\n");
+    }
+    
+    // Nested if statements
+    if (value > 0) {
+        if (condition) {
+            printf("Value is positive and condition is true\n");
+        } else {
+            printf("Value is positive but condition is false\n");
+        }
+    }
+    
+    // Compound conditions with logical operators
+    if (value > 5 && value < 15) {
+        printf("Value is between 6 and 14\n");
+    }
+    
+    if (value < 5 || value > 15) {
+        printf("Value is less than 5 or greater than 15\n");
+    } else {
+        printf("Value is between 5 and 15 inclusive\n");
+    }
+    
+    // Using not operator
+    if (!condition) {
+        printf("Condition is false\n");
+    } else {
+        printf("Condition is true\n");
+    }
+    
+    // Ternary operator
+    int result = (value > 5) ? 1 : 0;
+    printf("Result of ternary: %d\n", result);
+    
+    // For loop basic example
+    printf("\nBasic for loop:\n");
+    for (i = 0; i < max_iterations; i++) {
+        printf("Iteration %d\n", i);
+    }
+    
+    // While loop example
+    printf("\nWhile loop:\n");
+    i = 0;
+    while (i < max_iterations) {
+        printf("While iteration %d\n", i);
+        i++;
+    }
+    
+    // Do-while loop example
+    printf("\nDo-while loop:\n");
+    i = 0;
+    do {
+        printf("Do-while iteration %d\n", i);
+        i++;
+    } while (i < max_iterations);
+    
+    // Nested loops
+    printf("\nNested loops:\n");
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 2; j++) {
+            printf("Outer: %d, Inner: %d\n", i, j);
+        }
+    }
+    
+    // Loop with continue
+    printf("\nLoop with continue:\n");
+    for (i = 0; i < max_iterations; i++) {
+        if (i == 2) {
+            continue; // Skip iteration when i is 2
+        }
+        printf("Continue example: %d\n", i);
+    }
+    
+    // Loop with break
+    printf("\nLoop with break:\n");
+    for (i = 0; i < max_iterations; i++) {
+        if (i == 3) {
+            break; // Exit loop when i is 3
+        }
+        printf("Break example: %d\n", i);
+    }
+    
+    // Loop with compound conditions
+    printf("\nLoop with compound condition:\n");
+    i = 0;
+    while (i < max_iterations && i != 3) {
+        printf("Compound condition: %d\n", i);
+        i++;
+    }
+    
+    // Infinite loop with break
+    printf("\nControlled 'infinite' loop:\n");
+    i = 0;
+    for (;;) {
+        if (i >= 3) {
+            break;
+        }
+        printf("Infinite loop iteration: %d\n", i);
+        i++;
+    }
+    
+    // Switch case
+    switch (i) {
+        case 0:
+            i = 10;
+            break;
+        case 1:
+            i = 20;
+            break;
+        default:
+            i = 30;
+    }
+} 

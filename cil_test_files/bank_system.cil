@@ -1,0 +1,51 @@
+.method public static void Main() cil managed
+{
+    .entrypoint
+    .maxstack 3
+    .locals init (
+        class Account account1,
+        class Account account2,
+        bool result
+    )
+    
+    // Initialize accounts
+    ldc.i4 1000    // initial balance
+    ldc.i4 1001    // account number
+    newobj instance void Account::.ctor(int32, int32)
+    stloc.0
+    
+    ldc.i4 500     // initial balance
+    ldc.i4 1002    // account number
+    newobj instance void Account::.ctor(int32, int32)
+    stloc.1
+    
+    // Perform deposit on account 1
+    ldloc.0
+    ldc.i4 200     // deposit amount
+    call bool Transaction::Deposit(class Account, int32)
+    stloc.2
+    
+    // Perform withdrawal from account 2
+    ldloc.1
+    ldc.i4 100     // withdrawal amount
+    call bool Transaction::Withdraw(class Account, int32)
+    stloc.2
+    
+    // Perform transfer from account 1 to account 2
+    ldloc.0
+    ldloc.1
+    ldc.i4 300     // transfer amount
+    call bool AccountExtensions::Transfer(class Account, class Account, int32)
+    stloc.2
+    
+    // Print final balances
+    ldloc.0
+    call instance int32 Account::GetBalance()
+    call void [mscorlib]System.Console::WriteLine(int32)
+    
+    ldloc.1
+    call instance int32 Account::GetBalance()
+    call void [mscorlib]System.Console::WriteLine(int32)
+    
+    ret
+} 

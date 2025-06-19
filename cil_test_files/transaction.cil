@@ -1,0 +1,94 @@
+.class public sealed Transaction
+{
+    .method public static bool Deposit(class Account account, int32 amount) cil managed
+    {
+        .maxstack 3
+        .locals init (int32 currentBalance, bool success)
+        
+        // Check for positive amount
+        ldarg.1
+        ldc.i4.0
+        ble.s InvalidAmount
+        
+        // Try to acquire lock
+        call bool Account::TryLock()
+        brfalse.s LockFailed
+        
+        // Get current balance
+        ldarg.0
+        call instance int32 Account::GetBalance()
+        stloc.0
+        
+        // Update balance
+        ldarg.0
+        ldloc.0
+        ldarg.1
+        add
+        call instance void Account::SetBalance(int32)
+        
+        // Success
+        ldc.i4.1
+        stloc.1
+        br.s ReleaseLock
+        
+    InvalidAmount:
+    LockFailed:
+        ldc.i4.0
+        stloc.1
+        
+    ReleaseLock:
+        call void Account::Unlock()
+        
+        ldloc.1
+        ret
+    }
+    
+    .method public static bool Withdraw(class Account account, int32 amount) cil managed
+    {
+        .maxstack 3
+        .locals init (int32 currentBalance, bool success)
+        
+        // Check for positive amount
+        ldarg.1
+        ldc.i4.0
+        ble.s InvalidAmount
+        
+        // Try to acquire lock
+        call bool Account::TryLock()
+        brfalse.s LockFailed
+        
+        // Get current balance
+        ldarg.0
+        call instance int32 Account::GetBalance()
+        stloc.0
+        
+        // Check for sufficient funds
+        ldloc.0
+        ldarg.1
+        blt.s InsufficientFunds
+        
+        // Update balance
+        ldarg.0
+        ldloc.0
+        ldarg.1
+        sub
+        call instance void Account::SetBalance(int32)
+        
+        // Success
+        ldc.i4.1
+        stloc.1
+        br.s ReleaseLock
+        
+    InvalidAmount:
+    InsufficientFunds:
+    LockFailed:
+        ldc.i4.0
+        stloc.1
+        
+    ReleaseLock:
+        call void Account::Unlock()
+        
+        ldloc.1
+        ret
+    }
+} 

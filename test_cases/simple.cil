@@ -1,0 +1,21 @@
+/* Simple CIL test file */
+
+int global_var = 10;
+
+int add(int x, int y) {
+  return x + y;
+}
+
+void main() {
+  int a = 5;
+  int b = 7;
+  int result;
+  
+  result = add(a, b);
+  
+  if (result > 10) {
+    printf("Result is greater than 10\n");
+  } else {
+    printf("Result is not greater than 10\n");
+  }
+} 

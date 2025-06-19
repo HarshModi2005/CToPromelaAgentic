@@ -1,0 +1,39 @@
+// Structures and unions
+struct Point {
+    int x;
+    int y;
+};
+
+struct Rectangle {
+    struct Point top_left;
+    struct Point bottom_right;
+};
+
+union Data {
+    int i;
+    float f;
+    char str[20];
+};
+
+void test_structures() {
+    // Structure operations
+    struct Point p1 = {10, 20};
+    struct Point p2;
+    p2.x = 30;
+    p2.y = 40;
+    
+    // Nested structure
+    struct Rectangle rect;
+    rect.top_left = p1;
+    rect.bottom_right = p2;
+    
+    // Structure pointer
+    struct Point* ptr = &p1;
+    ptr->x = 15;
+    
+    // Union operations
+    union Data data;
+    data.i = 42;
+    data.f = 3.14;
+    strcpy(data.str, "Hello");
+} 
