@@ -1,6 +1,6 @@
 # CToPromelaAgentic: AI-Powered C to Promela Converter
 
-## Table of Contents 
+## Table of Contents   
 1. [Overview](#1-overview)
 2. [Core Features](#2-core-features)
 3. [Implementation Architecture & Details](#3-implementation-architecture-details)
